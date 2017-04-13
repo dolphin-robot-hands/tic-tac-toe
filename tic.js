@@ -1,7 +1,7 @@
 var TicTacToe = function() {
   var board;
   var turn;
-
+  var counter;
   //render board
   function render() {
     var table = $('<table>');
@@ -29,23 +29,37 @@ var TicTacToe = function() {
 
   function checkBoard(x, y) {
     //vertical
+    counter += 1;
+    var gameover = false;
     if( turn === board[x][0] && turn === board[x][1] && turn === board[x][2] ){
-        return true;
+        gameover = true;
     }
     if( turn === board[0][y] && turn === board[1][y] && turn === board[2][y] ){
-        return true;
+        gameover = true;
     }
     if( turn === board[0][0] && turn === board[1][1] && turn === board[2][2] ){
-        return true;
+        gameover = true;
     }
     if( turn === board[2][0] && turn === board[1][1] && turn === board[0][2] ){
-        return true;
+        gameover = true;
+    }
+    if (gameover == true) {
+      $('.endgame').text(turn + " WON!!!");
+      resetBoard();
+    }
+    if (counter === 9) {
+      $('.endgame').text("Cat's Game!!!");
+      resetBoard();
+    }
+    if (counter === 1) {
+      $('.endgame').text("");
     }
     return false;
   }
 
   // set all board spaces to blank
   function resetBoard() {
+    counter = 0;
     board = [["","",""],["","",""],["","",""]];
     $('td').text("");
     console.log(board);
@@ -66,10 +80,7 @@ var TicTacToe = function() {
                   cellClicked.text(turn);
                   board[x][y] = turn;
 
-                  if( checkBoard(x, y)) {
-                    alert(turn + " won!!!");
-                    resetBoard();
-                  }
+                  checkBoard(x, y)
                   turn = changeTurn();
                 }
               }

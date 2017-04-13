@@ -2,6 +2,18 @@ body {
   background-color: black;
 }
 
+.home {
+  color: white;
+  font-size: 50;
+}
+
+.endgame {
+  text-align: center;
+  margin: 20px;
+  color:  white;
+  height: 40px;
+}
+
 td {
   border-style: solid;
   border-color: darkgrey;
@@ -16,6 +28,13 @@ td {
   font-size: 80px;
 }
 
+.hidden {
+  background-color: black;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 table {
   border-collapse: collapse;
 }
@@ -26,6 +45,6 @@ table {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  width: 660;
+  width: 620;
   float: none;
 }
